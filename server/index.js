@@ -6,12 +6,20 @@ const jsonParser = bodyParser.json();
 const mongoose = require('mongoose');
 const {User} = require('./models');
 const app = express();
-const io = require('socket.io')
+const DATABASE_URL = process.env.DATABASE_URL ||
+                       global.DATABASE_URL || 'mongodb://user:lansford@ds159988.mlab.com:59988/chat_db';
+const io = require('socket.io').listen() // not passing anything into listen could cause problems
 
 
 
+io.sockets.on('connection', function(socket) {
+    connections.push(socket);
+    console.log('connected: %s sockets connected', connections.length);
 
-
+   // Disconnect
+    connections.splice(connections.indexOf(socket), 1)
+    console.log('Disconnected %s sockets connected', connections.length);
+});
 
 
 

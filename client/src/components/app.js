@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import Home from './home';
 
 class App extends React.Component {
 
@@ -9,6 +10,7 @@ class App extends React.Component {
         return (
 
             <div className="app">
+            <Home />
             </div>
         );
     }

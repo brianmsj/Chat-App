@@ -9,11 +9,7 @@ import App from './components/app';
 
 document.addEventListener('DOMContentLoaded', () =>
     ReactDOM.render(
-        <Provider store={store}>
-        	<Router history={hashHistory}>
-        		<Route path="/" component={App} />
-            </Router>
-        </Provider>,
-        document.getElementById('root')
+        <App title = "test" />
+        ,document.getElementById('root')
     )
 );
