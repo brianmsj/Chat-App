@@ -1,0 +1,19 @@
+{
+  "name": "Chat Application",
+  "version": "0.1.0",
+  "description": "Chat Application using SocketIO",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "Brian McMinn <brianmsj@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongoose": "^4.9.1",
+    "nodemon": "^1.11.0",
+    "passport": "^0.3.2",
+    "passport-http-bearer": "^1.0.1"
+  }
+}
