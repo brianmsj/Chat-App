@@ -5,6 +5,7 @@ const router = express.Router();
 const jsonParser = bodyParser.json();
 const mongoose = require('mongoose');
 const app = express();
+var io = require('socket.io')
 
 
 
