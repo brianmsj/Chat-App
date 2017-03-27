@@ -4,8 +4,10 @@ const bodyParser = require('body-parser');
 const router = express.Router();
 const jsonParser = bodyParser.json();
 const mongoose = require('mongoose');
+const {User} = require('./models');
 const app = express();
-var io = require('socket.io')
+const io = require('socket.io')
+
 
 
 
