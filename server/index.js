@@ -8,7 +8,9 @@ const {User} = require('./models');
 const app = express();
 const DATABASE_URL = process.env.DATABASE_URL ||
                        global.DATABASE_URL || 'mongodb://user:lansford@ds159988.mlab.com:59988/chat_db';
-const io = require('socket.io').listen() // not passing anything into listen could cause problems
+const io = require('socket.io').listen();
+
+ // not passing anything into listen could cause problems
 
 
 
@@ -17,8 +19,10 @@ io.sockets.on('connection', function(socket) {
     console.log('connected: %s sockets connected', connections.length);
 
    // Disconnect
+    socket.on('disconnect', function(data) {
     connections.splice(connections.indexOf(socket), 1)
     console.log('Disconnected %s sockets connected', connections.length);
+  });
 });
 
 
@@ -48,6 +52,7 @@ app.get(/^(?!\/api(\/|$))/, (req, res) => {
 });
 
 let server;
+
 function runServer(port=3001) {
     return new Promise((resolve, reject) => {
          mongoose.connect(DATABASE_URL, err => {
@@ -58,10 +63,10 @@ function runServer(port=3001) {
             server = app.listen(port, () => {
                 resolve();
             }).on('error', reject);
+
         });
     });
 }
-
 function closeServer() {
     return new Promise((resolve, reject) => {
         server.close(err => {

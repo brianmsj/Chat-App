@@ -5,7 +5,7 @@ import io from 'socket.io';
 class Home extends React.Component {
 
    componentDidMount() {
-     let socket=io.connect();
+     let socket=socket.on();
    }
 
     render() {
