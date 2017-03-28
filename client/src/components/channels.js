@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 
 
-class Rooms extends React.Component {
+class Channel extends React.Component {
     constructor(props) {
       super(props);
 
@@ -14,14 +14,13 @@ class Rooms extends React.Component {
     render() {
 
         return (
-              <div className='room-container'>
-                <h2 className='room-title'>Chat Rooms / Topics</h2>
+              <div className='channel-container'>
+                <h2 className='channel-title'>Users Online</h2>
               </div>
-
 
         );
       }
     }
 
 
-export default connect()(Rooms);
+export default connect()(Channel);

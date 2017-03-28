@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Users from './users';
-import Rooms from './rooms';
+import Channel from './channels';
+
 
 
 
@@ -17,7 +18,6 @@ class SideNav extends React.Component {
 
         return (
               <div className='side-nav'>
-                <Rooms />
                 <Users />
               </div>
 

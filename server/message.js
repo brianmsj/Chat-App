@@ -8,14 +8,7 @@ const messageSchema = mongoose.Schema({
   time: String
 });
 
-const channelSchema = mongoose.Schema({
-  name: { type:String, unique: true },
-  id: String,
-  between: Array
-});
 
 
 const Message = mongoose.model('Message', messageSchema);
-const Channel = mongoose.model('Channel', channelSchema);
 module.exports = {Message}
-module.exports = {Channel}
