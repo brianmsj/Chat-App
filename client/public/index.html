@@ -7,7 +7,14 @@
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://127.0.0.1:3001/socket.io/socket.io.js"></script>
+    <script>
+    const socket = io('http://localhost:3001/');
+    socket.on('news', function (data) {
+      console.log(data);
+      socket.emit('my other event', { my: 'data' });
+    });
+  </script>
     <!--
       Notice the use of %PUBLIC_URL% in the tag above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -29,4 +36,5 @@
       To create a production bundle, use `npm run build`.
     -->
   </body>
+
 </html>
