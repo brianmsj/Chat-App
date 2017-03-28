@@ -20,6 +20,61 @@ const io = require('socket.io')(server);
    // Disconnec
 });
 
+// Messages endpoints-------------------------------------
+app.get('/messages', function(req, res) {
+  Message.find({}, {id: 1, channelID: 1, text: 1, user: 1, time: 1, _id: 0}, function(err, data) {
+    if(err) {
+      console.log(err);
+      return res.status(500).json({msg: 'internal server error'});
+    }
+    res.json(data);
+  });
+});
+
+app.get('/messages/:channel', function(req, res) {
+  Message.find({channelID: req.params.channel}, {id: 1, channelID: 1, text: 1, user: 1, time: 1, _id: 0}, function(err, data) {
+    if(err) {
+      console.log(err);
+      return res.status(500).json({msg: 'internal server error'});
+    }
+    res.json(data);
+  });
+})
+
+app.post('/newmessage', function(req, res) {
+  var newMessage = new Message(req.body);
+  newMessage.save(function (err, data) {
+    if(err) {
+      console.log(err);
+      return res.status(500).json({msg: 'internal server error'});
+    }
+    res.json(data);
+  });
+});
+//Channels enpoints- ---------------------------------------------------
+
+app.get('/channels', function(req, res) {
+
+    Channel.find({},{name: 1, id:1, _id:0}, function(err, data) {
+      if(err) {
+        console.log(err);
+        return res.status(500).json({msg: 'internal server error'});
+      }
+
+      res.json(data);
+    });
+  });
+app.post('/channels/new_channel', function(req, res) {
+    var newChannel = new Channel(req.body);
+    newChannel.save(function (err, data) {
+      if(err) {
+        console.log(err);
+        return res.status(500).json({msg: 'internal server error'});
+      }
+
+      res.json(data);
+    });
+  });
 
 
 

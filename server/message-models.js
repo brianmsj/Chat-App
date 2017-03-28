@@ -1,5 +1,3 @@
-'use strict';
-
 const mongoose = require('mongoose');
 
 const messageSchema = mongoose.Schema({
@@ -13,7 +11,6 @@ const messageSchema = mongoose.Schema({
 const channelSchema = mongoose.Schema({
   name: { type:String, unique: true },
   id: String,
-  private: Boolean,
   between: Array
 });
 
